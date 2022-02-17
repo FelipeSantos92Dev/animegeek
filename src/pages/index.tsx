@@ -1,10 +1,9 @@
+import Layout from '../components/template/Layout'
 
 export default function Home () {
   return (
-    <div className={`
-      text-2xl
-    `}>
-      <h1>Hello, World!</h1>
-    </div>
+    <Layout titulo='Página Inicial' subtitulo='Template Admin'>
+      <h3>Conteúdo</h3>
+    </Layout>
   )
 }
