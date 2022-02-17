@@ -11,32 +11,29 @@ interface MenuItemProps {
 export default function MenuItem(props: MenuItemProps) {
   function rendLink() {
     return (
-      <a className={`
-          flex flex-col justify-center items-center
-          h-16 w-20
+      <a
+        className={`
+          flex h-16 w-20 flex-col
+          items-center justify-center
           dark:text-gray-400
           ${props.className}
-        `}>
-          {props.icone}
-          <span className={`text-xs`}>
-            {props.texto}
-          </span>
-        </a>
+        `}
+      >
+        {props.icone}
+        <span className={`text-xs`}>{props.texto}</span>
+      </a>
     )
   }
 
-  return(
-    <li onClick={props.onClick} className={`
-      hover:bg-gray-100 dark:hover:bg-gray-800
-      cursor-pointer
-      `}>
-      {props.url ? (
-        <Link href={props.url}>
-          {rendLink()}
-        </Link>
-      ) : (
-        rendLink()
-      )}
+  return (
+    <li
+      onClick={props.onClick}
+      className={`
+      cursor-pointer hover:bg-gray-100
+      dark:hover:bg-gray-800
+      `}
+    >
+      {props.url ? <Link href={props.url}>{rendLink()}</Link> : rendLink()}
     </li>
   )
 }
