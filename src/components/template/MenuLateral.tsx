@@ -7,6 +7,7 @@ import {
   TicketIcon,
   ShieldIcon,
   LogoutIcon,
+  UserIcon,
 } from '../icons'
 import MenuItem from './MenuItem'
 import Logo from './Logo'
@@ -33,6 +34,7 @@ export default function MenuLateral() {
         <MenuItem url="/ingressos" texto="Ingressos" icone={TicketIcon} />
         <MenuItem url="/validacao" texto="Validação" icone={ShieldIcon} />
         <MenuItem url="/ajustes" texto="Ajustes" icone={ConfigIcon} />
+        <MenuItem url="/perfil" texto="Perfil" icone={UserIcon} />
       </ul>
 
       <ul>
