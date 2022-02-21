@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import router from 'next/router'
 import loading1 from '../../../public/images/loading1.gif'
@@ -7,7 +8,22 @@ export default function Forcar(props) {
   const { usuario, carregando } = useAuth()
 
   function renderizarConteudo() {
-    return <>{props.children}</>
+    return (
+      <>
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+          if(!document.cookie?.includes("thunderbyte-animegeek")) {
+            window.location.href = "/autenticacao"
+          }
+        `,
+            }}
+          />
+        </Head>
+        {props.children}
+      </>
+    )
   }
 
   function renderizarCarregando() {
