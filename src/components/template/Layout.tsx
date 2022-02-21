@@ -19,7 +19,7 @@ export default function Layout(props: LayoutProps) {
         className={`
         flex w-full
         flex-col bg-gray-300
-        p-7 dark:bg-gray-800
+        py-3 px-7 dark:bg-gray-800
       `}
       >
         <Cabecalho titulo={props.titulo} subtitulo={props.subtitulo} />
