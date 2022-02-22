@@ -19,7 +19,7 @@ export default function Cabecalho(props: CabecalhoProps) {
       `}
       >
         <BotaoTema tema={tema} alternarTema={alternarTema} />
-        <AvatarUsuario className="ml-3" />
+        {/* <AvatarUsuario className="ml-3" /> */}
       </div>
     </div>
   )
