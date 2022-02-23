@@ -31,14 +31,14 @@ async function usuarioNormalizado(
     nome: usuarioFirebase.displayName,
     email: usuarioFirebase.email,
     token,
-    provedor: usuarioFirebase.providerData[0].providerId,
+    provedor: usuarioFirebase.providerData[0],
     imagemURL: usuarioFirebase.photoURL,
   }
 }
 
 function gerenciarCookie(logado: boolean) {
   if (logado) {
-    Cookies.set('thunderbyte-animegeek', logado, {
+    Cookies.set('thunderbyte-animegeek', {
       expires: 7,
     })
   } else {
@@ -56,7 +56,7 @@ export function AuthProvider(props: {
     | undefined
 }) {
   const [carregando, setCarregando] = useState(true)
-  const [usuario, setUsuario] = useState<Usuario>(null)
+  const [usuario, setUsuario] = useState<Usuario>()
 
   async function configurarSessao(usuarioFirebase: firebase.User | null) {
     if (usuarioFirebase?.email) {
@@ -67,7 +67,7 @@ export function AuthProvider(props: {
 
       return usuario.email
     } else {
-      setUsuario(null)
+      //setUsuario(null)
       gerenciarCookie(false)
       setCarregando(false)
 

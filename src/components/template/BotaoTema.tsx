@@ -1,8 +1,8 @@
 import { MoonIcon, SunIcon } from '../icons'
 
 interface BotaoTemaProps {
-  tema: string
-  alternarTema: () => void
+  tema: any
+  alternarTema: any
 }
 
 export default function BotaoTema(props: BotaoTemaProps) {
