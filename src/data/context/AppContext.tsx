@@ -1,4 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  ReactChild,
+  ReactFragment,
+  ReactPortal,
+  useEffect,
+  useState,
+} from 'react'
 
 // type Tema = 'dark' | ''
 
@@ -9,7 +16,15 @@ interface AppContextProps {
 
 const AppContext = createContext<AppContextProps>({})
 
-export function AppProvider(props) {
+export function AppProvider(props: {
+  children:
+    | boolean
+    | ReactChild
+    | ReactFragment
+    | ReactPortal
+    | null
+    | undefined
+}) {
   const [tema, setTema] = useState('')
 
   function alternarTema() {

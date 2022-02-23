@@ -4,7 +4,7 @@ import router from 'next/router'
 import loading1 from '../../../public/images/loading1.gif'
 import useAuth from '../../data/hook/useAuth'
 
-export default function Forcar(props) {
+export default function Forcar(props: { children: any }) {
   const { usuario, carregando } = useAuth()
 
   function renderizarConteudo() {

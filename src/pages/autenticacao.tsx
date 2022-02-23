@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
 import AuthInput from '../components/auth/AuthInput'
 import { WarnIcon } from '../components/icons'
 import useAuth from '../data/hook/useAuth'
@@ -10,7 +10,7 @@ export default function Autenticacao() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
-  function exibirErro(msg, time = 5000) {
+  function exibirErro(msg: SetStateAction<null>, time = 5000) {
     setErro(msg)
     setTimeout(() => setErro(null), time)
   }

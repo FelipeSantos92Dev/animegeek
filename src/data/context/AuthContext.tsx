@@ -1,5 +1,12 @@
 import route from 'next/router'
-import { createContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  ReactChild,
+  ReactFragment,
+  ReactPortal,
+  useEffect,
+  useState,
+} from 'react'
 import Cookies from 'js-cookie'
 import firebase from '../../firebase/config'
 import Usuario from '../../model/Usuario'
@@ -39,11 +46,19 @@ function gerenciarCookie(logado: boolean) {
   }
 }
 
-export function AuthProvider(props) {
+export function AuthProvider(props: {
+  children:
+    | boolean
+    | ReactChild
+    | ReactFragment
+    | ReactPortal
+    | null
+    | undefined
+}) {
   const [carregando, setCarregando] = useState(true)
   const [usuario, setUsuario] = useState<Usuario>(null)
 
-  async function configurarSessao(usuarioFirebase) {
+  async function configurarSessao(usuarioFirebase: firebase.User | null) {
     if (usuarioFirebase?.email) {
       const usuario = await usuarioNormalizado(usuarioFirebase)
       setUsuario(usuario)
@@ -60,7 +75,7 @@ export function AuthProvider(props) {
     }
   }
 
-  async function cadastrar(email, senha) {
+  async function cadastrar(email: string, senha: string) {
     try {
       setCarregando(true)
       const resp = await firebase
@@ -74,7 +89,7 @@ export function AuthProvider(props) {
     }
   }
 
-  async function login(email, senha) {
+  async function login(email: string, senha: string) {
     try {
       setCarregando(true)
       const resp = await firebase
