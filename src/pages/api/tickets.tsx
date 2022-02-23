@@ -67,22 +67,6 @@ export default async (
     //   // leitura: 1,
     // })
     // res.status(201).json(response.ops[0])
-  } else if (req.method === 'GET') {
-    const { codigo } = req.body
-
-    if (!codigo) {
-      res.status(400).json({ error: 'Código não enviado!' })
-    }
-
-    const { db } = await connect()
-
-    const response = await db.collection('tickets').findOne({ codigo })
-
-    if (!response) {
-      res.status(400).json({ error: 'Ingresso não encontrado!' })
-      return
-    }
-    res.status(200).json(response)
   } else {
     res.status(400).json({ error: 'Método de envio errado' })
   }
