@@ -11,10 +11,10 @@ interface SuccessResponseType {
   validade: string
 }
 
-export default async (
+export default async function createTicket(
   req: NextApiRequest,
   res: NextApiResponse<ErrorResponseType | SuccessResponseType>
-): Promise<void> => {
+): Promise<void> {
   if (req.method === 'POST') {
     const { validade } = req.body
 

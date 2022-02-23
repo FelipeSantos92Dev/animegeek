@@ -20,9 +20,9 @@ export default function Ingressos() {
       subtitulo="Tipo e emissão de ingressos"
     >
       <h3>Ingressos AnimeGeek</h3>
-      <p>Código do ingresso: {data?.data.codigo}</p>
+      {/* <p>Código do ingresso: {data?.data.codigo}</p>
       <p>Validade do ingresso: {data?.data.validade}</p>
-      <p>Autenticações permitidas: {data?.data.autenticacao}</p>
+      <p>Autenticações permitidas: {data?.data.autenticacao}</p> */}
     </Layout>
   )
 }
