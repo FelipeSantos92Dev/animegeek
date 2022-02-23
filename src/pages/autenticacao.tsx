@@ -23,7 +23,7 @@ export default function Autenticacao() {
         await cadastrar!(email, senha)
       }
     } catch (e) {
-      return
+      exibirErro(e?.message ?? 'Erro ao tentar acessar a plataforma!')
     }
   }
 

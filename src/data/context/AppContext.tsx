@@ -33,10 +33,10 @@ export function AppProvider(props: {
     localStorage.setItem('tema', novoTema)
   }
 
-  // useEffect(() => {
-  //   const temaSalvo = localStorage.getItem('tema')
-  //   setTema(temaSalvo)
-  // }, [])
+  useEffect(() => {
+    const temaSalvo = localStorage.getItem('tema')
+    setTema(temaSalvo)
+  }, [])
 
   return (
     <AppContext.Provider

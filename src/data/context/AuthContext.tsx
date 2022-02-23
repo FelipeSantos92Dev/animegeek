@@ -67,7 +67,7 @@ export function AuthProvider(props: {
 
       return usuario.email
     } else {
-      //setUsuario(null)
+      setUsuario(null)
       gerenciarCookie(false)
       setCarregando(false)
 
