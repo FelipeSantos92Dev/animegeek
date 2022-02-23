@@ -1,3 +1,4 @@
+import { UserIconDash } from '../components/icons'
 import Layout from '../components/template/Layout'
 
 export default function Home() {
