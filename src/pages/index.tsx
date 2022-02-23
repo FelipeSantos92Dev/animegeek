@@ -6,7 +6,7 @@ export default function Home() {
       <h3>Dashboard</h3>
 
       <div className="mt-4 md:flex">
-        <div className="m-4 flex items-center justify-around rounded-xl bg-white shadow-lg lg:w-1/3">
+        <div className="m-4 flex items-center justify-center rounded-xl bg-white shadow-lg lg:w-1/3">
           <img src="https://i.imgur.com/VHc5SJE.png" alt="" />
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -16,7 +16,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="m-4 flex items-center justify-around rounded-xl bg-white shadow-lg lg:w-1/3">
+        <div className="m-4 flex items-center justify-center rounded-xl bg-white shadow-lg lg:w-1/3">
           <img src="https://i.imgur.com/Qnmqkil.png" alt="" />
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -25,7 +25,7 @@ export default function Home() {
             <span className="text-gray-500">Público Presente</span>
           </div>
         </div>
-        <div className="m-4 flex items-center justify-around rounded-xl bg-white shadow-lg lg:w-1/3">
+        <div className="m-4 flex items-center justify-center rounded-xl bg-white shadow-lg lg:w-1/3">
           <img src="https://i.imgur.com/dJeEVcO.png" alt="" />
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-2xl lg:text-2xl">
