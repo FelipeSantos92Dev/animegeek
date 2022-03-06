@@ -7,7 +7,8 @@ export default function Perfil() {
 
       <div className="relative my-24 mt-4 w-full overflow-hidden rounded shadow-2xl">
         <div className="grid  bg-white ">
-          <div className="col-span-12 h-full pb-12 md:col-span-10 md:border-l md:border-solid md:border-black md:border-opacity-25">
+          <div className="col-span-12 h-full pb-12 md:col-span-10 md:border-l
+            md:border-solid md:border-black md:border-opacity-25">
             <div className="px-4 pt-4">
               <form action="#" className="flex flex-col space-y-8">
                 <div>
@@ -20,7 +21,8 @@ export default function Perfil() {
                   <input
                     type="text"
                     value="Antonia P. Howell"
-                    className="focus:shadow-outline mr-2 w-full appearance-none rounded py-1 px-2 text-black  text-opacity-50 shadow focus:border-blue-200 focus:outline-none"
+                    className="focus:shadow-outline mr-2 w-full appearance-none rounded
+                      py-1 px-2 text-black  text-opacity-50 shadow focus:border-blue-200 focus:outline-none"
                     disabled
                   />
                 </div>
@@ -31,7 +33,8 @@ export default function Perfil() {
                     <input
                       type="text"
                       value="antonia"
-                      className="focus:shadow-outline mr-2 w-full appearance-none rounded py-1 px-2 text-black text-opacity-50 text-opacity-25 shadow focus:border-blue-200 focus:outline-none "
+                      className="focus:shadow-outline mr-2 w-full appearance-none rounded
+                        py-1 px-2 text-black text-opacity-50 text-opacity-25 shadow focus:border-blue-200 focus:outline-none "
                       disabled
                     />
                   </div>

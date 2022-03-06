@@ -2,8 +2,22 @@ import Layout from '../components/template/Layout'
 import useSWR from 'swr'
 import api from '../../utils/api'
 import { TicketIconSell, UserIconDash } from '../components/icons'
+import Tabela from "../components/template/Tabela"
+import Ticket from '../core/Ticket'
 
 export default function Ingressos() {
+  const tickets = [
+    new Ticket('2022123', 'Combo', 2, 0, 'Não Validado', '123'),
+    new Ticket('2022789', 'Sábado', 1, 0, 'Não Validado', '789'),
+    new Ticket('2022032', 'Domingo', 1, 0, 'Não Validado', '032'),
+    new Ticket('2022123', 'Combo', 2, 0, 'Não Validado', '123'),
+    new Ticket('2022789', 'Sábado', 1, 0, 'Não Validado', '789'),
+    new Ticket('2022032', 'Domingo', 1, 0, 'Não Validado', '032'),
+    new Ticket('2022123', 'Combo', 2, 0, 'Não Validado', '123'),
+    new Ticket('2022789', 'Sábado', 1, 0, 'Não Validado', '789'),
+    new Ticket('2022032', 'Domingo', 1, 0, 'Não Validado', '032'),
+    new Ticket('2022741', 'Combo', 2, 0, 'Não Validado', '741')
+  ]
   const ticket = 20227436
   const { data, error } = useSWR(`/api/ticket/${ticket}`, api)
 
@@ -58,6 +72,7 @@ export default function Ingressos() {
           </div>
         </div>
       </div>
+      <Tabela tickets={tickets}></Tabela>
     </Layout>
   )
 }
