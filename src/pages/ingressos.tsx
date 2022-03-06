@@ -1,51 +1,23 @@
 import Layout from '../components/template/Layout'
 import { TicketIconSell } from '../components/icons'
 import Tabela from "../components/template/Tabela"
-import Ticket from '../core/Ticket'
 import BotaoAdd from '../components/template/BotaoAdd'
 import Formulario from '../components/template/Formulario'
-import { useEffect, useState } from 'react'
-import TicketRepository from '../core/TicketRepository'
-import ColecaoTicket from '../firebase/db/ColecaoTicket'
+
+import useTickets from '../data/hook/useTickets'
 
 export default function Ingressos() {
 
-  const repo: TicketRepository = new ColecaoTicket()
-
-  const [ticket, setTicket] = useState<Ticket>(Ticket.vazio())
-  const [tickets, setTickets] = useState<Ticket[]>([])
-  const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela')
-
-  useEffect(getAll, [])
-  
-  function getAll() {
-    repo.getAll().then(tickets => {
-      setTickets(tickets)
-      setVisivel('tabela')
-    })
-    
-  }
-
-  function ticketSelecionado(ticket: Ticket) {
-    setTicket(ticket)
-    setVisivel('form')
-  }
-
-  async function ticketExluido(ticket: Ticket) {
-    await repo.delete(ticket)
-    getAll()   
-  }
-
-  function novoTicket() {
-    setTicket(Ticket.vazio)
-    setVisivel('form')  
-  }
-
-  async function salvarTicket(ticket: Ticket) {
-    await repo.save(ticket)
-    getAll()
-  }
-
+  const {
+    ticket,
+    tickets,
+    selecionarTicket,
+    novoTicket,
+    salvarTicket,
+    excluirTicket,
+    tabelaVisivel,
+    exibirTabela
+  } = useTickets()
 
   return (
     <Layout
@@ -85,7 +57,7 @@ export default function Ingressos() {
         </div>
       </div>
 
-      {visivel === 'tabela' ? (
+      {tabelaVisivel ? (
         <>
           <div className='flex justify-end'>
             <BotaoAdd cor='red' className='mt-2 mr-4' onClick={novoTicket}>
@@ -93,15 +65,15 @@ export default function Ingressos() {
             </BotaoAdd>
           </div>
           <Tabela tickets={tickets}
-            ticketSelecionado={ticketSelecionado}
-            ticketExcluido={ticketExluido}
+            ticketSelecionado={selecionarTicket}
+            ticketExcluido={excluirTicket}
           />
         </>
       ) : (
         <Formulario
           ticket={ticket}
           ticketMudou={salvarTicket}
-          cancelado={() => setVisivel('tabela')}
+          cancelado={exibirTabela}
         />
       )}
     </Layout>
