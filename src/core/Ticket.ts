@@ -16,7 +16,7 @@ export default class Ticket {
   }
 
   static vazio() {
-    return new Ticket('20220421123', 'Sábado', 1, 0, 'Não Autenticado', '')
+    return new Ticket('', '', 0, 0, '', '')
   }
 
   get id() {

@@ -3,8 +3,14 @@ import { TicketIconSell } from '../components/icons'
 import Tabela from "../components/template/Tabela"
 import Ticket from '../core/Ticket'
 import BotaoAdd from '../components/template/BotaoAdd'
+import Formulario from '../components/template/Formulario'
+import { useState } from 'react'
 
 export default function Ingressos() {
+
+  const [ticket, setTicket] = useState<Ticket>(Ticket.vazio())
+  const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela')
+
   const tickets = [
     new Ticket('2022123', 'Combo', 2, 0, 'Não Validado', '123'),
     new Ticket('2022789', 'Sábado', 1, 0, 'Não Validado', '789'),
@@ -19,21 +25,33 @@ export default function Ingressos() {
   ]
 
   function ticketSelecionado(ticket: Ticket) {
-    console.log(ticket.categoria);    
+    setTicket(ticket)
+    setVisivel('form')
   }
 
   function ticketExluido(ticket: Ticket) {
     console.log(`Excluir ${ticket.codigo}`);    
   }
 
+  function novoTicket() {
+    setTicket(Ticket.vazio)
+    setVisivel('form')  
+  }
+
+  function salvarTicket(ticket: Ticket) {
+    console.log(ticket);  
+    setVisivel('tabela')  
+  }
+
+
   return (
     <Layout
       titulo="Gerenciamento de Ingressos"
       subtitulo="Tipo e emissão de ingressos"
     >
-      <h3>Ingressos AnimeGeek</h3>
-      <div className="mt-4 md:flex">
-        <div className="m-4 flex cursor-pointer items-center justify-around rounded-xl bg-red-200 p-4 shadow-lg lg:w-1/3">
+      {/* <h3>Ingressos AnimeGeek</h3> */}
+      <div className="md:flex">
+        <div className="m-2 flex cursor-pointer items-center justify-around rounded-xl bg-red-200 p-2 shadow-lg lg:w-1/3">
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -43,7 +61,7 @@ export default function Ingressos() {
           </div>
         </div>
 
-        <div className="m-4 flex cursor-pointer items-center justify-around rounded-xl bg-blue-200 p-4 shadow-lg lg:w-1/3">
+        <div className="m-2 flex cursor-pointer items-center justify-around rounded-xl bg-blue-200 p-4 shadow-lg lg:w-1/3">
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -53,7 +71,7 @@ export default function Ingressos() {
           </div>
         </div>
 
-        <div className="m-4 flex cursor-pointer items-center justify-around rounded-xl bg-green-200 p-4 shadow-lg lg:w-1/3">
+        <div className="m-2 flex cursor-pointer items-center justify-around rounded-xl bg-green-200 p-4 shadow-lg lg:w-1/3">
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -63,13 +81,26 @@ export default function Ingressos() {
           </div>
         </div>
       </div>
-      <div className='flex justify-end'>
-        <BotaoAdd cor='red' className='m-4'>Novo Ingresso</BotaoAdd>
-      </div>
-      <Tabela tickets={tickets}
-        ticketSelecionado={ticketSelecionado}
-        ticketExcluido={ticketExluido}
-      />
+
+      {visivel === 'tabela' ? (
+        <>
+          <div className='flex justify-end'>
+            <BotaoAdd cor='red' className='mt-2 mr-4' onClick={novoTicket}>
+              Novo Ingresso
+            </BotaoAdd>
+          </div>
+          <Tabela tickets={tickets}
+            ticketSelecionado={ticketSelecionado}
+            ticketExcluido={ticketExluido}
+          />
+        </>
+      ) : (
+        <Formulario
+          ticket={ticket}
+          ticketMudou={salvarTicket}
+          cancelado={() => setVisivel('tabela')}
+        />
+      )}
     </Layout>
   )
 }
