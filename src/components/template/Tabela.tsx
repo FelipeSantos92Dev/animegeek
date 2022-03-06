@@ -1,10 +1,15 @@
 import Ticket from "../../core/Ticket"
+import { EditIcon, TrashIcon } from "../icons"
 
 interface TabelaProps {
   tickets: Ticket[]
+  ticketSelecionado?: (ticket: Ticket) => void
+  ticketExcluido?: (ticket: Ticket) => void
 }
 
 export default function tabela(props: TabelaProps) {
+
+  const exibirAcoes = props.ticketSelecionado || props.ticketExcluido
 
   function rendCabecalho() {
     return (
@@ -12,6 +17,7 @@ export default function tabela(props: TabelaProps) {
         <th className="text-left p-2">Código</th>
         <th className="text-left p-2">Categoria</th>
         <th className="text-left p-2">Status</th>
+        {exibirAcoes ? <th className="p-2">Ações</th> : false}
       </tr>
     )
   }
@@ -23,9 +29,34 @@ export default function tabela(props: TabelaProps) {
           <td className="text-left p-2">{ticket.codigo}</td>
           <td className="text-left p-2">{ticket.categoria}</td>
           <td className="text-left p-2">{ticket.status}</td>
+          {exibirAcoes ? rendAcoes(ticket) : false}
         </tr>
       )
     })
+  }
+
+  function rendAcoes(ticket: Ticket) {
+    return (
+      <td className="flex items-center justify-center">
+        {props.ticketSelecionado ? (
+          <button onClick={() => props.ticketSelecionado?.(ticket)} className={`
+            flex justify-center items-center text-green-600 p-2 m-1
+            rounded-full hover:bg-red-50
+          `}>
+            {EditIcon}
+          </button>
+        ) : false}
+
+        {props.ticketExcluido ? (
+          <button onClick={() => props.ticketExcluido?.(ticket)} className={`
+            flex justify-center items-center text-red-600 p-2 m-1
+            rounded-full hover:bg-red-50
+          `}>
+          {TrashIcon}
+          </button>
+        ) : false}
+      </td>
+    )
   }
 
   return (
