@@ -17,6 +17,8 @@ export default function Formulario(props: FormularioProps) {
   const [auth, setAuth] = useState(props.ticket?.auth ?? 0)
   const [status, setStatus] = useState(props.ticket?.status ?? '')
 
+  const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+
   return (
     <div>
       <div className="">
@@ -32,7 +34,7 @@ export default function Formulario(props: FormularioProps) {
         <div className="flex justify-end mt-7">
           <BotaoAdd className="bg-gradient-to-r from-green-400 to-green-800
           text-white px-4 py-2 rounded-md mr-2"
-            onClick={() => props.ticketMudou?.(new Ticket(codigo, categoria, +validade, +auth, status, id))} >
+            onClick={() => props.ticketMudou?.(new Ticket(randomCode, categoria, +validade, +auth, status, id))} >
             {id ? 'Alterar' : 'Salvar'}
           </BotaoAdd>
 

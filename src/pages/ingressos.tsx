@@ -4,33 +4,36 @@ import Tabela from "../components/template/Tabela"
 import Ticket from '../core/Ticket'
 import BotaoAdd from '../components/template/BotaoAdd'
 import Formulario from '../components/template/Formulario'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import TicketRepository from '../core/TicketRepository'
+import ColecaoTicket from '../firebase/db/ColecaoTicket'
 
 export default function Ingressos() {
 
+  const repo: TicketRepository = new ColecaoTicket()
+
   const [ticket, setTicket] = useState<Ticket>(Ticket.vazio())
+  const [tickets, setTickets] = useState<Ticket[]>([])
   const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela')
 
-  const tickets = [
-    new Ticket('2022123', 'Combo', 2, 0, 'Não Validado', '123'),
-    new Ticket('2022789', 'Sábado', 1, 0, 'Não Validado', '789'),
-    new Ticket('2022032', 'Domingo', 1, 0, 'Não Validado', '032'),
-    new Ticket('2022123', 'Combo', 2, 0, 'Não Validado', '123'),
-    new Ticket('2022789', 'Sábado', 1, 0, 'Não Validado', '789'),
-    new Ticket('2022032', 'Domingo', 1, 0, 'Não Validado', '032'),
-    new Ticket('2022123', 'Combo', 2, 0, 'Não Validado', '123'),
-    new Ticket('2022789', 'Sábado', 1, 0, 'Não Validado', '789'),
-    new Ticket('2022032', 'Domingo', 1, 0, 'Não Validado', '032'),
-    new Ticket('2022741', 'Combo', 2, 0, 'Não Validado', '741')
-  ]
+  useEffect(getAll, [])
+  
+  function getAll() {
+    repo.getAll().then(tickets => {
+      setTickets(tickets)
+      setVisivel('tabela')
+    })
+    
+  }
 
   function ticketSelecionado(ticket: Ticket) {
     setTicket(ticket)
     setVisivel('form')
   }
 
-  function ticketExluido(ticket: Ticket) {
-    console.log(`Excluir ${ticket.codigo}`);    
+  async function ticketExluido(ticket: Ticket) {
+    await repo.delete(ticket)
+    getAll()   
   }
 
   function novoTicket() {
@@ -38,9 +41,9 @@ export default function Ingressos() {
     setVisivel('form')  
   }
 
-  function salvarTicket(ticket: Ticket) {
-    console.log(ticket);  
-    setVisivel('tabela')  
+  async function salvarTicket(ticket: Ticket) {
+    await repo.save(ticket)
+    getAll()
   }
 
 
