@@ -1,3 +1,5 @@
+import ticketsPDF from '../reports/tickets'
+
 export default class Ticket {
   #id: string
   #codigo: string
@@ -22,7 +24,9 @@ export default class Ticket {
   }
 
   static novo1() {
-    const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+    const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());    
+    ticketsPDF(randomCode)
+
     return new Ticket(
       randomCode,
       'Sábado',
@@ -36,6 +40,8 @@ export default class Ticket {
 
   static novo2() {
     const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+    ticketsPDF(randomCode)
+
     return new Ticket(
       randomCode,
       'Domingo',
@@ -49,6 +55,8 @@ export default class Ticket {
 
   static novo3() {
     const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+    ticketsPDF(randomCode)
+    
     return new Ticket(
       randomCode,
       'Combo',

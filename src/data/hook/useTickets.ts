@@ -47,23 +47,6 @@ export default function useTickets() {
     getAll()
   }
 
-  // async function novoTicket1() {
-  //   const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
-  //   new Ticket(
-  //     randomCode,
-  //     'Sbado',
-  //     1,
-  //     0,
-  //     'Emitido',
-  //     ''
-  //   )
-  // }
-
-  // async function salvarTicket(ticket: Ticket) {
-  //   await repo.save(ticket)
-  //   getAll()
-  // }
-
   async function salvarTicket(ticket: Ticket) {
     await repo.save(Ticket.novo1())
     getAll()

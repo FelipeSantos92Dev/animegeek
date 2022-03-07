@@ -1,7 +1,6 @@
 import Layout from '../components/template/Layout'
 import { TicketIconSell } from '../components/icons'
 import Tabela from "../components/template/Tabela"
-import BotaoAdd from '../components/template/BotaoAdd'
 import Formulario from '../components/template/Formulario'
 
 import useTickets from '../data/hook/useTickets'
@@ -11,7 +10,6 @@ export default function Ingressos() {
   const {
     ticket,
     tickets,
-    selecionarTicket,
     novoTicket,
     novoTicket2,
     novoTicket3,
@@ -71,13 +69,7 @@ export default function Ingressos() {
 
       {tabelaVisivel ? (
         <>
-          {/* <div className='flex justify-end'>
-            <BotaoAdd cor='red' className='mt-2 mr-4' onClick={novoTicket}>
-              Novo Ingresso
-            </BotaoAdd>
-          </div> */}
           <Tabela tickets={tickets}
-            // ticketSelecionado={selecionarTicket}
             ticketExcluido={excluirTicket}
           />
         </>

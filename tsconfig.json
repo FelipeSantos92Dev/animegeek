@@ -26,7 +26,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/reports/QRCodeCanvas.js", "src/components/template/QRCode.js"  ],
   "exclude": [
     "example",
     "node_modules"
