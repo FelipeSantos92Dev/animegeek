@@ -9,6 +9,7 @@ export default class ColecaoTicket implements TicketRepository {
       return {
         codigo: ticket.codigo,
         categoria: ticket.categoria,
+        preco: ticket.preco,
         validade: ticket.validade,
         auth: ticket.auth,
         status: ticket.status,
@@ -17,7 +18,8 @@ export default class ColecaoTicket implements TicketRepository {
     fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot,
       options: firebase.firestore.SnapshotOptions): Ticket {
         const dados = snapshot?.data(options)
-        return new Ticket(dados.codigo, dados.categoria, dados.validade, dados.auth, dados.status, snapshot.id)
+        return new Ticket(dados.codigo, dados.categoria, dados.preco,
+          dados.validade, dados.auth, dados.status, snapshot.id)
     }
   }
 

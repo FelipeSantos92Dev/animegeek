@@ -2,13 +2,15 @@ export default class Ticket {
   #id: string
   #codigo: string
   #categoria: string
+  #preco: number
   #validade: number
   #auth: number
   #status: string
 
-  constructor(codigo: string, categoria: string, validade: number, auth: number, status: string, id: string = null) {
+  constructor(codigo: string, categoria: string, preco: number, validade: number, auth: number, status: string, id: string = null) {
     this.#codigo = codigo
     this.#categoria = categoria
+    this.#preco = preco
     this.#validade = validade
     this.#auth = auth
     this.#status = status
@@ -16,7 +18,7 @@ export default class Ticket {
   }
 
   static vazio() {
-    return new Ticket('', '', 0, 0, '', '')
+    return new Ticket('', '', 0, 0, 0, '', '')
   }
 
   static novo1() {
@@ -24,6 +26,7 @@ export default class Ticket {
     return new Ticket(
       randomCode,
       'Sábado',
+      35,
       1,
       0,
       'Emitido',
@@ -36,6 +39,7 @@ export default class Ticket {
     return new Ticket(
       randomCode,
       'Domingo',
+      35,
       1,
       0,
       'Emitido',
@@ -48,6 +52,7 @@ export default class Ticket {
     return new Ticket(
       randomCode,
       'Combo',
+      50,
       2,
       0,
       'Emitido',
@@ -63,6 +68,9 @@ export default class Ticket {
   }
   get categoria() {
     return this.#categoria
+  }
+  get preco() {
+    return this.#preco
   }
   get validade() {
     return this.#validade

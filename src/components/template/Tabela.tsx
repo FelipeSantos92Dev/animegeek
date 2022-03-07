@@ -16,6 +16,7 @@ export default function tabela(props: TabelaProps) {
       <tr>
         <th className="text-left p-2">Código</th>
         <th className="text-left p-2">Categoria</th>
+        <th className="text-left p-2">Preço</th>
         <th className="text-left p-2">Status</th>
         {exibirAcoes ? <th className="p-2">Ações</th> : false}
       </tr>
@@ -28,6 +29,7 @@ export default function tabela(props: TabelaProps) {
         <tr key={ticket.id} className={`${i % 2 ===0 ? 'bg-red-200' : 'bg-red-100'}`}>
           <td className="text-left p-2">{ticket.codigo}</td>
           <td className="text-left p-2">{ticket.categoria}</td>
+          <td className="text-left p-2">R$ {ticket.preco}</td>
           <td className="text-left p-2">{ticket.status}</td>
           {exibirAcoes ? rendAcoes(ticket) : false}
         </tr>

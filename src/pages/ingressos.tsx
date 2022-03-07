@@ -36,7 +36,7 @@ export default function Ingressos() {
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
-              R$ 30
+              R$ 35
             </h1>
             <span className="text-gray-500">1º Dia</span>
           </div>
@@ -49,7 +49,7 @@ export default function Ingressos() {
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
-              R$ 30
+              R$ 35
             </h1>
             <span className="text-gray-500">2º Dia</span>
           </div>

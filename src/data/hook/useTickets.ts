@@ -33,19 +33,16 @@ export default function useTickets() {
   }
   
   async function novoTicket() {
-    // setTicket(Ticket.novo1)
     await repo.save(Ticket.novo1())
     getAll()
   }
 
   async function novoTicket2() {
-    // setTicket(Ticket.novo1)
     await repo.save(Ticket.novo2())
     getAll()
   }
 
   async function novoTicket3() {
-    // setTicket(Ticket.novo1)
     await repo.save(Ticket.novo3())
     getAll()
   }
