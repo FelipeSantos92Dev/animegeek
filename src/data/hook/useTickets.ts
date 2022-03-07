@@ -31,21 +31,54 @@ export default function useTickets() {
     await repo.delete(ticket)
     getAll()   
   }
-
-  function novoTicket() {
-    setTicket(Ticket.vazio)
-    exibirForm()
-  }
-
-  async function salvarTicket(ticket: Ticket) {
-    await repo.save(ticket)
+  
+  async function novoTicket() {
+    // setTicket(Ticket.novo1)
+    await repo.save(Ticket.novo1())
     getAll()
   }
+
+  async function novoTicket2() {
+    // setTicket(Ticket.novo1)
+    await repo.save(Ticket.novo2())
+    getAll()
+  }
+
+  async function novoTicket3() {
+    // setTicket(Ticket.novo1)
+    await repo.save(Ticket.novo3())
+    getAll()
+  }
+
+  // async function novoTicket1() {
+  //   const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+  //   new Ticket(
+  //     randomCode,
+  //     'Sbado',
+  //     1,
+  //     0,
+  //     'Emitido',
+  //     ''
+  //   )
+  // }
+
+  // async function salvarTicket(ticket: Ticket) {
+  //   await repo.save(ticket)
+  //   getAll()
+  // }
+
+  async function salvarTicket(ticket: Ticket) {
+    await repo.save(Ticket.novo1())
+    getAll()
+  }
+
 
   return {
     ticket,
     tickets,
     novoTicket,
+    novoTicket2,
+    novoTicket3,
     salvarTicket,
     excluirTicket,
     selecionarTicket,

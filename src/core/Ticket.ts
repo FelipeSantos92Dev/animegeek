@@ -19,6 +19,42 @@ export default class Ticket {
     return new Ticket('', '', 0, 0, '', '')
   }
 
+  static novo1() {
+    const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+    return new Ticket(
+      randomCode,
+      'Sábado',
+      1,
+      0,
+      'Emitido',
+      ''
+    )
+  }
+
+  static novo2() {
+    const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+    return new Ticket(
+      randomCode,
+      'Domingo',
+      1,
+      0,
+      'Emitido',
+      ''
+    )
+  }
+
+  static novo3() {
+    const randomCode = "2022"+(Math.floor(Math.random() * (10000 + 1)).toString());
+    return new Ticket(
+      randomCode,
+      'Combo',
+      2,
+      0,
+      'Emitido',
+      ''
+    )
+  }
+
   get id() {
     return this.#id
   }

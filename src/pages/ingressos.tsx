@@ -13,6 +13,8 @@ export default function Ingressos() {
     tickets,
     selecionarTicket,
     novoTicket,
+    novoTicket2,
+    novoTicket3,
     salvarTicket,
     excluirTicket,
     tabelaVisivel,
@@ -26,7 +28,11 @@ export default function Ingressos() {
     >
       {/* <h3>Ingressos AnimeGeek</h3> */}
       <div className="md:flex">
-        <div className="m-2 flex cursor-pointer items-center justify-around rounded-xl bg-red-200 p-2 shadow-lg lg:w-1/3">
+        <div className={`
+          m-2 flex cursor-pointer items-center
+          justify-around rounded-xl
+          bg-red-200 p-2 shadow-lg lg:w-1/3`
+          } onClick={novoTicket}>
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -36,7 +42,10 @@ export default function Ingressos() {
           </div>
         </div>
 
-        <div className="m-2 flex cursor-pointer items-center justify-around rounded-xl bg-blue-200 p-4 shadow-lg lg:w-1/3">
+        <div className={`
+          m-2 flex cursor-pointer items-center
+          justify-around rounded-xl bg-blue-200 p-4 shadow-lg lg:w-1/3
+        `} onClick={novoTicket2}>
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -46,7 +55,10 @@ export default function Ingressos() {
           </div>
         </div>
 
-        <div className="m-2 flex cursor-pointer items-center justify-around rounded-xl bg-green-200 p-4 shadow-lg lg:w-1/3">
+        <div className={`
+          m-2 flex cursor-pointer items-center
+          justify-around rounded-xl bg-green-200 p-4 shadow-lg lg:w-1/3
+        `} onClick={novoTicket3}>
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
@@ -59,13 +71,13 @@ export default function Ingressos() {
 
       {tabelaVisivel ? (
         <>
-          <div className='flex justify-end'>
+          {/* <div className='flex justify-end'>
             <BotaoAdd cor='red' className='mt-2 mr-4' onClick={novoTicket}>
               Novo Ingresso
             </BotaoAdd>
-          </div>
+          </div> */}
           <Tabela tickets={tickets}
-            ticketSelecionado={selecionarTicket}
+            // ticketSelecionado={selecionarTicket}
             ticketExcluido={excluirTicket}
           />
         </>
