@@ -25,6 +25,6 @@ export default function ticketsPDF(ticket) {
     footer: [footer]
   }
 
-  pdfMake.createPdf(docDefinitions).open()
+  pdfMake.createPdf(docDefinitions).print()
 
 }
