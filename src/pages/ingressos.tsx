@@ -28,7 +28,7 @@ export default function Ingressos() {
       <div className="md:flex">
         <div className={`
           m-2 flex cursor-pointer items-center
-          justify-around rounded-xl
+          justify-around rounded-xl dark:text-gray-900
           bg-red-200 p-2 shadow-lg lg:w-1/3`
           } onClick={novoTicket}>
           {TicketIconSell}
@@ -41,7 +41,7 @@ export default function Ingressos() {
         </div>
 
         <div className={`
-          m-2 flex cursor-pointer items-center
+          m-2 flex cursor-pointer items-center dark:text-gray-900
           justify-around rounded-xl bg-blue-200 p-4 shadow-lg lg:w-1/3
         `} onClick={novoTicket2}>
           {TicketIconSell}
@@ -54,7 +54,7 @@ export default function Ingressos() {
         </div>
 
         <div className={`
-          m-2 flex cursor-pointer items-center
+          m-2 flex cursor-pointer items-center dark:text-gray-900
           justify-around rounded-xl bg-green-200 p-4 shadow-lg lg:w-1/3
         `} onClick={novoTicket3}>
           {TicketIconSell}

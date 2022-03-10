@@ -71,7 +71,7 @@ export default function tabela(props: TabelaProps) {
         {rendCabecalho()}
       </thead>
 
-      <tbody>
+      <tbody className="dark:text-gray-900">
         {rendDados()}
       </tbody>
     </table>

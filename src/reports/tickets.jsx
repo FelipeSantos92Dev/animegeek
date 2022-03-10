@@ -6,11 +6,57 @@ export default function ticketsPDF(ticket) {
 
   
 
-  const reportTitle = [ticket]
+  const reportTitle = []
 
   const details = [
     {
-      qr: ticket
+      text: 'ANIMEGEEK',
+      fontSize: 20,
+      bold: true,
+      alignment: 'center',
+      margin: [0, 10, 0, 10]
+    },
+
+    {
+      text: 'Sábado - 05 de Abril',
+      fontSize: 15,
+      bold: true,
+      alignment: 'center',
+      margin: [0, 0, 0, 0]
+    },
+
+    {
+      text: 'Local:',
+      fontSize: 12,
+      italics: true,
+      alignment: 'left',
+      margin: [20, 20, 0, 0]
+    },
+
+    {
+      text: 'Hora:',
+      fontSize: 12,
+      italics: true,
+      alignment: 'left',
+      margin: [20, 0, 0, 50]
+    },
+
+    {
+      alignment: 'center',
+      qr: ticket,
+      margin: [0, 0, 0, 60]
+    },
+
+    {
+      text: ' _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _'
+    },
+
+    {
+      alignment: 'left',
+      qr: ticket,
+      fit: 50,
+      layout: 'headerLineOnly',
+      margin: [20, 10, 0, 0]
     }
   ]
 
@@ -18,7 +64,7 @@ export default function ticketsPDF(ticket) {
 
   const docDefinitions = {
     pageSize: 'A6',
-    // pageMargins: [15, 50, 15, 40],
+    pageMargins: [0, 0, 0, 0],
 
     header: [reportTitle],
     content: [details],
