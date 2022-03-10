@@ -48,7 +48,8 @@ export default function ticketsPDF(ticket) {
     },
 
     {
-      text: ' _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _'
+      text: ' _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _',
+      alignment: 'center',
     },
 
     {

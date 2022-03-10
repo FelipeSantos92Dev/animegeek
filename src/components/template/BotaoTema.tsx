@@ -12,7 +12,7 @@ export default function BotaoTema(props: BotaoTemaProps) {
       className={`
         hidden h-8 w-14 cursor-pointer items-center rounded-full
         bg-gradient-to-r from-yellow-300 to-yellow-600 p-1
-        sm:flex lg:w-24
+        sm:flex
     `}
     >
       <div
@@ -30,7 +30,7 @@ export default function BotaoTema(props: BotaoTemaProps) {
           lg:flex
       `}
       >
-        <span>Claro</span>
+        {/* <span>Claro</span> */}
       </div>
     </div>
   ) : (
@@ -39,7 +39,7 @@ export default function BotaoTema(props: BotaoTemaProps) {
       className={`
       hidden h-8 w-14 cursor-pointer items-center justify-end
       rounded-full bg-gradient-to-r from-gray-500 to-gray-900
-      p-1 sm:flex lg:w-24
+      p-1 sm:flex
   `}
     >
       <div
@@ -48,7 +48,7 @@ export default function BotaoTema(props: BotaoTemaProps) {
           lg:flex
       `}
       >
-        <span>Escuro</span>
+        {/* <span>Escuro</span> */}
       </div>
       <div
         className={`
