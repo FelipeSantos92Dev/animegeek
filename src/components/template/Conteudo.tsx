@@ -7,6 +7,7 @@ export default function Conteudo(props: ConteudoProps) {
       <div
         className={`
         mt-7 flex flex-col
+        overflow-scroll
         dark:text-gray-300
       `}
       >
