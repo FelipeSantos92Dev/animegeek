@@ -32,9 +32,9 @@ export default function MenuLateral() {
       >
         <Logo />
       </div>
-      <ul className="flex-grow h-full">
+      <ul className="h-full flex-grow">
         <MenuItem url="/" texto="Dashboard" icone={DashIcon} />
-        <MenuItem url="/ingressos" texto="Ingressos" icone={TicketIcon} />
+        <MenuItem url="/tickets" texto="Ingressos" icone={TicketIcon} />
         {/* <MenuItem url="/validacao" texto="Validação" icone={ShieldIcon} /> */}
         {/* <MenuItem url="/perfil" texto="Perfil" icone={UserIcon} />
         <MenuItem url="/ajustes" texto="Ajustes" icone={ConfigIcon} /> */}

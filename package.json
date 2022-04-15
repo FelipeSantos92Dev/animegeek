@@ -6,21 +6,24 @@
     "start": "next start"
   },
   "dependencies": {
+    "@prisma/client": "3.12.0",
     "axios": "^0.26.0",
     "firebase": "^8.6.8",
     "js-cookie": "^3.0.1",
     "mongodb": "^3.6.2",
     "next": "latest",
     "pdfmake": "^0.2.4",
+    "prisma": "^3.12.0",
     "qrcode": "^1.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "swr": "^1.2.2"
+    "swr": "^1.2.2",
+    "ts-node": "^10.7.0"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.1",
     "@types/mongodb": "^3.5.27",
-    "@types/node": "^17.0.4",
+    "@types/node": "^17.0.24",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
@@ -38,6 +41,6 @@
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.1",
     "tailwindcss": "^3.0.7",
-    "typescript": "^4.5.4"
+    "typescript": "^4.6.3"
   }
 }

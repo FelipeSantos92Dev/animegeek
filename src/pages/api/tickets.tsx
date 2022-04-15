@@ -1,73 +1,52 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import connect from '../../../utils/database'
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { randomInt } from 'crypto'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { prismaClient } from '../../database/prismaClient'
 
-interface ErrorResponseType {
-  error: string
-}
-
-interface SuccessResponseType {
-  codigo: string
-  qrcode: string
-  validade: string
-}
-
-export default async function createTicket(
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ErrorResponseType | SuccessResponseType>
-): Promise<void> {
+  res: NextApiResponse
+) {
   if (req.method === 'POST') {
-    const { validade } = req.body
+    const code = '202204' + randomInt(100000)
+    const price = 25
+    const status = 'Vendido'
 
-    if (validade === 'sabado') {
-      const { db } = await connect()
+    await prismaClient.ticket.create({
+      data: {
+        code,
+        price,
+        status,
+      },
+    })
+    return res.status(201).send(null)
+  } else if (req.method === 'PUT') {
+    const { id } = req.body
 
-      const response = await db.collection('tickets').insertOne({
-        codigo: '2022' + (Math.floor(Math.random() * 10000) + 1),
-        validade,
-        autenticacao: 1,
-        leitura: 0,
-        //qrcode,
+    if (id) {
+      const ticket = await prismaClient.ticket.findFirst({
+        where: { id },
       })
-      res.status(201).json(response.ops[0])
-    } else if (validade === 'domingo') {
-      const { db } = await connect()
 
-      const response = await db.collection('tickets').insertOne({
-        codigo: '2022' + (Math.floor(Math.random() * 10000) + 1),
-        validade,
-        autenticacao: 1,
-        leitura: 0,
-        //qrcode,
-      })
-      res.status(201).json(response.ops[0])
-    } else if (validade === 'combo') {
-      const { db } = await connect()
-
-      const response = await db.collection('tickets').insertOne({
-        codigo: '2022' + (Math.floor(Math.random() * 10000) + 1),
-        validade,
-        autenticacao: 2,
-        leitura: 0,
-        //qrcode,
-      })
-      res.status(201).json(response.ops[0])
+      if (ticket?.status === 'Vendido') {
+        try {
+          await prismaClient.ticket.update({
+            where: { id },
+            data: {
+              status: 'Autenticado',
+            },
+          })
+          return res.status(200).send(null)
+        } catch (error) {
+          return res
+            .status(404)
+            .json({ message: 'Erro ao validar! Tente novamente!' })
+        }
+      } else if (ticket?.status === 'Autenticado') {
+        return res.status(400).json({ message: 'Ingresso já autenticado!' })
+      } else {
+        return res.status(404).json({ message: 'Ingresso não encontrado!' })
+      }
     }
-
-    if (!validade) {
-      res.status(400).json({ error: 'Parâmetros inválidos!' })
-      return
-    }
-    // const { db } = await connect()
-
-    // const response = await db.collection('tickets').insertOne({
-    //   codigo: '2022' + (Math.floor(Math.random() * 10000) + 1),
-    //   qrcode,
-    //   validade,
-    //   // autenticacao: 0,
-    //   // leitura: 1,
-    // })
-    // res.status(201).json(response.ops[0])
-  } else {
-    res.status(400).json({ error: 'Método de envio errado' })
   }
 }

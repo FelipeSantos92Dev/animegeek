@@ -1,7 +1,15 @@
-import { UserIconDash } from '../components/icons'
 import Layout from '../components/template/Layout'
+import axios from 'axios'
+import { GetServerSideProps } from 'next'
 
-export default function Home() {
+type Props = {
+  sold: number
+  validated: number
+  cash: number
+}
+
+export default function Home(props: Props) {
+  const { sold, validated, cash } = props
   return (
     <Layout titulo="Painel Administrativo" subtitulo="Dados gerais">
       <h3>Dashboard</h3>
@@ -11,7 +19,7 @@ export default function Home() {
           <img src="https://i.imgur.com/VHc5SJE.png" alt="" />
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
-              7.980
+              {sold}
             </h1>
             <span className="text-gray-500">Ingressos Vendidos</span>
           </div>
@@ -21,7 +29,7 @@ export default function Home() {
           <img src="https://i.imgur.com/Qnmqkil.png" alt="" />
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
-              7.240
+              {validated}
             </h1>
             <span className="text-gray-500">Público Presente</span>
           </div>
@@ -30,7 +38,7 @@ export default function Home() {
           <img src="https://i.imgur.com/dJeEVcO.png" alt="" />
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-2xl lg:text-2xl">
-              R$ 72.000
+              R$ {cash}
             </h1>
             <span className="text-gray-500">Renda Total</span>
           </div>
@@ -38,4 +46,19 @@ export default function Home() {
       </div>
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await axios.get('http://localhost:3000/api/dashboard')
+  const sold = data.sold
+  const validated = data.validated
+  const cash = data.cash
+
+  return {
+    props: {
+      sold,
+      validated,
+      cash,
+    },
+  }
 }

@@ -4,14 +4,13 @@ interface ConteudoProps {
 
 export default function Conteudo(props: ConteudoProps) {
   return (
-      <div
-        className={`
+    <div
+      className={`
         mt-7 flex flex-col
-        overflow-scroll
         dark:text-gray-300
       `}
-      >
-        {props.children}
-      </div>
+    >
+      {props.children}
+    </div>
   )
 }
