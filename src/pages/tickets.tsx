@@ -20,14 +20,14 @@ export default function Ingressos() {
         <div
           className={`
           m-2 flex cursor-pointer items-center
-          justify-around rounded-xl bg-red-200
+          justify-around rounded-xl bg-blue-200
           p-2 shadow-lg dark:text-gray-900 lg:w-1/3`}
           onClick={createTckt}
         >
           {TicketIconSell}
           <div className="text-center">
             <h1 className=" font-bold text-gray-800 sm:text-xl lg:text-2xl">
-              R$ 35
+              R$ 25
             </h1>
             <span className="text-gray-500">1º Dia</span>
           </div>
