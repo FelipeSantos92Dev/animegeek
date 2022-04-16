@@ -15,8 +15,8 @@ export default function Ingressos() {
       titulo="Gerenciamento de Ingressos"
       subtitulo="Tipo e emissão de ingressos"
     >
-      {/* <h3>Ingressos AnimeGeek</h3> */}
-      <div className="md:flex">
+      <h3>Ingressos AnimeGeek</h3>
+      <div className="mt-4 md:flex">
         <div
           className={`
           m-2 flex cursor-pointer items-center

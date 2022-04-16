@@ -30,22 +30,24 @@ export default async function handler(
 
       if (ticket?.status === 'Vendido') {
         try {
-          await prismaClient.ticket.update({
+          const ticket = await prismaClient.ticket.update({
             where: { id },
             data: {
               status: 'Autenticado',
             },
           })
-          return res.status(200).send(null)
+          return res
+            .status(200)
+            .json({ message: 'Ingresso autenticado com sucesso!' })
         } catch (error) {
           return res
-            .status(404)
+            .status(200)
             .json({ message: 'Erro ao validar! Tente novamente!' })
         }
       } else if (ticket?.status === 'Autenticado') {
-        return res.status(400).json({ message: 'Ingresso já autenticado!' })
+        return res.status(200).json({ message: 'Ingresso já autenticado!' })
       } else {
-        return res.status(404).json({ message: 'Ingresso não encontrado!' })
+        return res.status(200).json({ message: 'Ingresso não encontrado!' })
       }
     }
   }
