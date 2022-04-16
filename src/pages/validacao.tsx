@@ -4,10 +4,11 @@ import { FormEvent, useState } from 'react'
 import Layout from '../components/template/Layout'
 
 type Props = {
-  data: object
+  data: Array<any>
 }
 
-const url = 'https://animegeek.vercel.app/api/tickets'
+// const url = 'https://animegeek.vercel.app/api/tickets'
+const url = 'http://localhost:3000/api/tickets'
 
 export default function Validacao(props: Props) {
   const { data } = props
