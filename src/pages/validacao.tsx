@@ -29,7 +29,8 @@ export default function Validacao(props: Props) {
         <form>
           <input
             id="validator"
-            required
+            autoFocus
+            defaultValue=""
             className={`
               w-80 rounded-md border bg-gray-200 px-2 py-1 text-gray-800
               focus:border-blue-500 focus:bg-white focus:outline-none
@@ -40,9 +41,15 @@ export default function Validacao(props: Props) {
           />
           <button
             onClick={validate}
-            className="ml-2 rounded-md bg-blue-500 px-2 py-1 font-semibold text-white"
+            className="ml-2 rounded-md bg-blue-700 px-2 py-1 font-semibold text-white"
           >
             Validar
+          </button>
+          <button
+            onClick={() => window.location.reload()}
+            className="ml-2 rounded-md bg-green-700 px-2 py-1 font-semibold text-white"
+          >
+            Atualizar
           </button>
         </form>
       </div>
