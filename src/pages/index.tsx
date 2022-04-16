@@ -49,7 +49,8 @@ export default function Home(props: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await axios.get('http://localhost:3000/api/dashboard')
+  const url = 'https://animegeek.vercel.app/api/dashboard'
+  const { data } = await axios.get(url)
   const sold = data.sold
   const validated = data.validated
   const cash = data.cash
