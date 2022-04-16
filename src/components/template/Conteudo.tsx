@@ -6,7 +6,7 @@ export default function Conteudo(props: ConteudoProps) {
   return (
     <div
       className={`
-        mt-7 flex flex-col
+        mt-7 flex flex-col overflow-y-auto
         dark:text-gray-300
       `}
     >

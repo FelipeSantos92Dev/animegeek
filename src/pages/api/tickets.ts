@@ -50,5 +50,8 @@ export default async function handler(
         return res.status(200).json({ message: 'Ingresso não encontrado!' })
       }
     }
+  } else if (req.method === 'GET') {
+    const ticket = await prismaClient.ticket.findMany()
+    return res.status(200).json(ticket)
   }
 }

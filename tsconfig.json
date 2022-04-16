@@ -1,13 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "lib": [
-      "es6",
-      "es7",
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["es6", "es7", "dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -25,10 +19,9 @@
     "pages",
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/reports/QRCodeCanvas.js", "src/components/template/QRCode.js"  ],
-  "exclude": [
-    "example",
-    "node_modules"
-  ]
+    "**/*.tsx",
+    "src/reports/QRCodeCanvas.js",
+    "src/components/template/QRCode.js"
+  ],
+  "exclude": ["example", "node_modules"]
 }
