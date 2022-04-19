@@ -1,7 +1,7 @@
 import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
 import JsBarcode from 'jsbarcode'
-import {createCanvas} from 'canvas'
+import { createCanvas } from 'canvas'
 
 const canvas = createCanvas(0, 0)
 
@@ -18,7 +18,7 @@ export default function ticketsPDF(qrId, barCode) {
       fontSize: 20,
       bold: true,
       alignment: 'center',
-      margin: [0, 10, 0, 10]
+      margin: [0, 10, 0, 10],
     },
 
     {
@@ -26,7 +26,7 @@ export default function ticketsPDF(qrId, barCode) {
       fontSize: 15,
       bold: true,
       alignment: 'center',
-      margin: [0, 0, 0, 0]
+      margin: [0, 0, 0, 0],
     },
 
     {
@@ -34,7 +34,7 @@ export default function ticketsPDF(qrId, barCode) {
       fontSize: 12,
       italics: true,
       alignment: 'left',
-      margin: [20, 20, 0, 0]
+      margin: [20, 20, 0, 0],
     },
 
     {
@@ -42,13 +42,13 @@ export default function ticketsPDF(qrId, barCode) {
       fontSize: 12,
       italics: true,
       alignment: 'left',
-      margin: [20, 0, 0, 30]
+      margin: [20, 0, 0, 30],
     },
 
     {
       alignment: 'center',
       qr: qrId,
-      margin: [0, 0, 0, 40]
+      margin: [0, 0, 0, 40],
     },
 
     {
@@ -57,10 +57,12 @@ export default function ticketsPDF(qrId, barCode) {
     },
 
     {
-      image: canvas.toDataURL(), width: 160, height: 60,
+      image: canvas.toDataURL(),
+      width: 160,
+      height: 60,
       alignment: 'center',
-      margin: [0, 10, 0, 0]
-    }
+      margin: [0, 10, 0, 0],
+    },
   ]
 
   const footer = []
@@ -71,9 +73,8 @@ export default function ticketsPDF(qrId, barCode) {
 
     header: [reportTitle],
     content: [details],
-    footer: [footer]
+    footer: [footer],
   }
 
   pdfMake.createPdf(docDefinitions).print()
-
 }

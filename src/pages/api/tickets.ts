@@ -51,7 +51,9 @@ export default async function handler(
       }
     }
   } else if (req.method === 'GET') {
-    const ticket = await prismaClient.ticket.findMany()
+    const ticket = await prismaClient.ticket.findMany({
+      orderBy: { updated_at: 'desc' },
+    })
     return res.status(200).json(ticket)
   }
 }
