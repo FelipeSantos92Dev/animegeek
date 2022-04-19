@@ -1,12 +1,19 @@
 import Layout from '../components/template/Layout'
+import ticketsPDF from '../reports/tickets'
 import { TicketIconSell } from '../components/icons'
 import { FormEvent } from 'react'
 import axios from 'axios'
 
 async function createTckt(event: FormEvent) {
   event.preventDefault()
-  await axios.post('/api/tickets')
-  alert('Ingresso Gerado!')
+  let qrId = 'Vazio'
+  let barCode = 'Vazio'
+  await axios.post('/api/tickets').then((response) => {
+    qrId = response.data.ticket.id
+    barCode = response.data.ticket.code
+    console.log(qrId, barCode)
+  })
+  ticketsPDF(qrId, barCode)
 }
 
 export default function Ingressos() {

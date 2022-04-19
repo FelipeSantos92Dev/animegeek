@@ -12,14 +12,14 @@ export default async function handler(
     const price = 25
     const status = 'Vendido'
 
-    await prismaClient.ticket.create({
+    const ticket = await prismaClient.ticket.create({
       data: {
         code,
         price,
         status,
       },
     })
-    return res.status(201).send(null)
+    return res.status(201).json({ ticket })
   } else if (req.method === 'PUT') {
     const { id } = req.body
 

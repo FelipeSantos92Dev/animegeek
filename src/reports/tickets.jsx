@@ -1,10 +1,14 @@
 import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
+import JsBarcode from 'jsbarcode'
+import {createCanvas} from 'canvas'
 
-export default function ticketsPDF(ticket) {
+const canvas = createCanvas(0, 0)
+
+export default function ticketsPDF(qrId, barCode) {
+  JsBarcode(canvas, barCode)
+
   pdfMake.vfs = pdfFonts.pdfMake.vfs
-
-  
 
   const reportTitle = []
 
@@ -38,13 +42,13 @@ export default function ticketsPDF(ticket) {
       fontSize: 12,
       italics: true,
       alignment: 'left',
-      margin: [20, 0, 0, 50]
+      margin: [20, 0, 0, 30]
     },
 
     {
       alignment: 'center',
-      qr: ticket,
-      margin: [0, 0, 0, 60]
+      qr: qrId,
+      margin: [0, 0, 0, 40]
     },
 
     {
@@ -53,11 +57,9 @@ export default function ticketsPDF(ticket) {
     },
 
     {
-      alignment: 'left',
-      qr: ticket,
-      fit: 50,
-      layout: 'headerLineOnly',
-      margin: [20, 10, 0, 0]
+      image: canvas.toDataURL(), width: 160, height: 60,
+      alignment: 'center',
+      margin: [0, 10, 0, 0]
     }
   ]
 
